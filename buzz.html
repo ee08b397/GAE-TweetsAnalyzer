@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Tweets Analyzer</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+  <body>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+  <a class="brand"> Tweets Analyser </a>
+  <ul class="nav">
+  <li><a href="/">Search</a></li>
+  <li class="active"><a href="/buzz">Buzzs</a></li>
+  <p class="navbar-text pull-left">{{ currentUser }} <a href="{{ url }}">{{ url_linktext }}</a></p>
+  </ul>
+  </div>
+  </div>
+  <div class="hero-unit">
+  <center>
+  <p><img src="http://shifters.files.wordpress.com/2010/06/google_buzz_logo.png" class="img-rounded"></p>
+  {% if buzzQuery.count() != 0 %}
+    <table class="table table-hover table-bordered">
+     <thead>
+     <th>User</th>
+     <th>Keywords</th>
+     <th>Altitude of most of the tweets</th>
+     </thead>
+     <tbody>
+  {% for buzz in buzzQuery %}
+  <tr> 
+  <td>{{buzz.user_name}}</td>
+  <td>{{buzz.search_keyword}}</td>
+  <td>{{buzz.value}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+   {% endif %}
+   </center> 
+   </div> 
+  </body>
+</html>
